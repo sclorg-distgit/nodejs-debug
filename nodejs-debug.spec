@@ -5,7 +5,7 @@
 
 Name:       %{?scl_prefix}nodejs-debug
 Version:    2.2.0
-Release:    2%{?dist}
+Release:    4%{?dist}
 Summary:    A small debugging utility for Node.js
 # License text is included in Readme.md
 License:    MIT
@@ -20,7 +20,7 @@ ExclusiveArch: %{nodejs_arches} noarch
 ExclusiveArch: %{ix86} x86_64 %{arm} noarch
 %endif
 
-BuildRequires:  nodejs010-runtime
+BuildRequires:  %{?scl_prefix}runtime
 
 %description
 This module is a tiny Node.js debugging utility modeled after node core's
@@ -43,6 +43,12 @@ cp -pr package.json *.js %{buildroot}%{nodejs_sitelib}/debug
 %{nodejs_sitelib}/debug
 
 %changelog
+* Tue Feb 16 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 2.2.0-4
+- Use macro in -runtime dependency
+
+* Sun Feb 14 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 2.2.0-3
+- Rebuilt with updated metapackage
+
 * Tue Dec 01 2015 Tomas Hrcka <thrcka@redhat.com> - 2.2.0-2
 - Enable scl macros
 
